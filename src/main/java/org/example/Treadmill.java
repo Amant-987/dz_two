@@ -7,7 +7,11 @@ class Treadmill {
         this.length = length;
     }
 
-    public void pass(Participant participant) {
-        participant.run(length);
+    public boolean pass(Participant participant) {
+        if (participant.run(length)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

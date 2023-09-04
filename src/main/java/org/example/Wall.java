@@ -7,7 +7,11 @@ class Wall {
         this.height = height;
     }
 
-    public void pass(Participant participant) {
-        participant.jump(height);
+    public boolean pass(Participant participant) {
+        if (participant.jump(height)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

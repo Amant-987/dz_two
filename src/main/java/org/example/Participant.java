@@ -11,19 +11,27 @@ abstract class Participant {
         this.jumpingLimit = jumpingLimit;
     }
 
-    public void run(int distance) {
+    public String getName() {
+        return name;
+    }
+
+    public boolean run(int distance) {
         if (distance <= runningLimit) {
             System.out.println(name + " успешно пробежал " + distance + " метров.");
+            return true;
         } else {
             System.out.println(name + " не смог пробежать " + distance + " метров.");
+            return false;
         }
     }
 
-    public void jump(int height) {
+    public boolean jump(int height) {
         if (height <= jumpingLimit) {
             System.out.println(name + " успешно перепрыгнул препятствие высотой " + height + " метров.");
+            return true;
         } else {
             System.out.println(name + " не смог перепрыгнуть препятствие высотой " + height + " метров.");
+            return false;
         }
     }
 }

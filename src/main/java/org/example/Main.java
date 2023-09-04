@@ -20,22 +20,26 @@ public class Main {
             boolean isParticipantSucceeded = true;
 
             for (Object obstacle : obstacles) {
-                if (obstacle instanceof Treadmill) {
-                    Treadmill treadmill = (Treadmill) obstacle;
-                    treadmill.pass(participant);
-                } else if (obstacle instanceof Wall) {
-                    Wall wall = (Wall) obstacle;
-                    wall.pass(participant);
-                }
-
-                // Если участник не смог пройти препятствие, прекращаем проверку
-                if (isParticipantSucceeded == false) {
-                    break;
+                if (obstacle instanceof Treadmill treadmill) {
+                    if (!treadmill.pass(participant)) {
+                        isParticipantSucceeded = false;
+                        break;
+                    }
+                } else if (obstacle instanceof Wall wall) {
+                    if (!wall.pass(participant)) {
+                        isParticipantSucceeded = false;
+                        break;
+                    }
                 }
             }
 
-            System.out.println();
+            if (isParticipantSucceeded) {
+                System.out.println(participant.getName() + " успешно прошел все препятствия.");
+            } else {
+                System.out.println(participant.getName() + " не смог пройти все препятствия.");
+            }
 
+            System.out.println();
         }
     }
 }
